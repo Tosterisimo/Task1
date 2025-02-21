@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <style>
+      form {
+        width: min-content;
+        background-color: rgb(129 140 120);
+        border-radius: 10%;
+        padding: 20px;
+      }
+      input {
+        width: 150px;
+        height: 30px;
+        padding-left: 10px;
+        margin: 5px;
+        background-color: rgb(226 224 200);
+        color: rgb(129 140 120);
+        border-style: none;
+        border-radius: 10%;
+      }
+      input:last-child {
+        cursor: pointer;
+        font-size: 20px;
+        background-color: rgb(167 180 158);
+        color: rgb(226 224 200);
+      }
+    </style>
+  </head>
+  <body>
+    <form id="form" onsubmit="onFormSubmit()">
+      <input type="text" required placeholder="name" />
+      <input type="text" required placeholder="surname" />
+      <input type="text" required placeholder="email" />
+      <input type="text" required placeholder="password" />
+      <input type="submit" value="submit" />
+    </form>
+    <script>
+      let userData = {
+        name: null,
+        surname: null,
+        email: null,
+        password: null,
+      };
+      function onFormSubmit() {
+        event.preventDefault();
+        const form = document.getElementById("form");
+        for (let index = 0; index < form.childElementCount; index++) {
+          if (form.children[index].type == "text") {
+            userData[form.children[index].placeholder] =
+              form.children[index].value;
+          }
+        }
+        console.log(userData);
+      }
+    </script>
+  </body>
+</html>
